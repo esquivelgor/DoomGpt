@@ -2015,7 +2015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   explotion: {fileID: 7578303485629930909, guid: e3a9712bb1d023beea419746c285b14b, type: 3}
-  playerRange: 10
+  playerRange: 5
   theRB: {fileID: 305953396}
   moveSpeed: 2
 --- !u!50 &305953396
@@ -2033,7 +2033,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -11600,6 +11600,7 @@ MonoBehaviour:
   bulletImpact: {fileID: 5812806780055237174, guid: 961510313e83a17e9a8631695fe75f88, type: 3}
   currentAmmo: 10
   gunAnim: {fileID: 381529136}
+  maxHealth: 100
 --- !u!4 &2105423553
 Transform:
   m_ObjectHideFlags: 0
