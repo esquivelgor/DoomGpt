@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
 	
 	public Animator gunAnim;
 	
+	private int currentHealth;
+	public int maxHealth = 100;
+	
 	private void Awake()
 	{
 		instance = this;
@@ -65,6 +68,11 @@ public class PlayerController : MonoBehaviour
         		if(Physics.Raycast(ray, out hit))
         		{
         			Instantiate(bulletImpact, hit.point, transform.rotation);
+        			
+        			if(hit.transform.tag == "Enemy")
+        			{
+        				hit.transform.parent.GetComponent<EnemyController>().TakeDamage();
+        			}
         			
         			//Debug.Log("I'm looking at " + hit.transform.name);
         		} else 
