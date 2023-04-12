@@ -5,7 +5,6 @@ using UnityEngine;
 public class AmmoPickUp : MonoBehaviour
 {
 	public int ammoAmount = 25;
-	//public Animator ammoAnim;
 	
     // Start is called before the first frame update
     void Start()
@@ -16,7 +15,7 @@ public class AmmoPickUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    	//ammoAnim.SetTrigger("Ammo");
+    
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -24,7 +23,7 @@ public class AmmoPickUp : MonoBehaviour
     	if(other.tag == "Player")
     	{
     		PlayerController.instance.currentAmmo += ammoAmount;
-    		
+    		PlayerController.instance.UpdateAmmoUI();
     		Destroy(gameObject);
     	}
     }
