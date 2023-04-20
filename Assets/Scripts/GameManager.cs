@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour
         {
         	LockCursor();
         }
-        
     }
     
     private void LockCursor()
