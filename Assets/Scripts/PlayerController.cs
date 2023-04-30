@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
 		    } else {
 		    	anim.SetBool("IsMoving", false);
 		    }
-        }
+      }
         
     }
     
@@ -114,6 +114,8 @@ public class PlayerController : MonoBehaviour
     	if(currentHealth <= 0)
     	{
     		deadScreen.SetActive(true);
+    		Cursor.lockState = CursorLockMode.None;
+    	  Cursor.visible = true;
     		hasDied = true;
     		currentHealth = 0;
     	}
