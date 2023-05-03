@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
 	
 	public Text healthText, ammoText;
 	
+  public AudioSource footstepsSound;
+	
 	private void Awake()
 	{
 		instance = this;
@@ -57,7 +59,6 @@ public class PlayerController : MonoBehaviour
 		    Vector3 moveHorizontal = transform.up * -moveInput.x;
 		    Vector3 moveVertical = transform.right * moveInput.y;
 		    
-		    
 		    theRB.velocity = (moveHorizontal + moveVertical) * moveSpeed;
 		    
 		    // Player view control
@@ -74,7 +75,7 @@ public class PlayerController : MonoBehaviour
 		    {
 		    	if(currentAmmo > 0)
 		    	{
-		    	
+		    	  AudioController.instance.PlayWaterShotgun();
 		    		Ray ray = viewCam.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
 		    		RaycastHit hit;
 		    		if(Physics.Raycast(ray, out hit))
@@ -84,9 +85,9 @@ public class PlayerController : MonoBehaviour
 		    			if(hit.transform.tag == "Enemy")
 		    			{
 		    				hit.transform.parent.GetComponent<EnemyController>().TakeDamage();
+		    			} else {
+		    			  AudioController.instance.PlaycolliderSound();
 		    			}
-		    			
-		    			//Debug.Log("I'm looking at " + hit.transform.name);
 		    		} else 
 		    		{
 		    			Debug.Log("I'm looking at nothing ");
@@ -110,7 +111,7 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
     	currentHealth -= damageAmount;
-    
+      AudioController.instance.PlayPlayerDamage();
     	if(currentHealth <= 0)
     	{
     		deadScreen.SetActive(true);

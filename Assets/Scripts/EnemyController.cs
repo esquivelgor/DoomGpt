@@ -28,6 +28,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //AudioController.instance.PlayEnemySound();
         if(Vector3.Distance(transform.position, PlayerController.instance.transform.position) < playerRange)
         {
         	Vector3 playerDirection = PlayerController.instance.transform.position - transform.position;
@@ -52,11 +53,12 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage() 
     {
     	health--;
+      
     	if(health <= 0)
     	{
+    	  AudioController.instance.PlayenemyDead();
     		Destroy(gameObject);
     		Instantiate(explotion, transform.position, transform.rotation);
-    		
     	}
     	
     }
