@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
 	public Text healthText, ammoText;
 	
   public AudioSource footstepsSound;
+  public int gameDeadScene = 2;
 	
 	private void Awake()
 	{
@@ -114,9 +116,9 @@ public class PlayerController : MonoBehaviour
       AudioController.instance.PlayPlayerDamage();
     	if(currentHealth <= 0)
     	{
-    		deadScreen.SetActive(true);
     		Cursor.lockState = CursorLockMode.None;
     	  Cursor.visible = true;
+    		SceneManager.LoadScene(gameDeadScene);
     		hasDied = true;
     		currentHealth = 0;
     	}
